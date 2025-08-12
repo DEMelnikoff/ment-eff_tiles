@@ -8,7 +8,7 @@ var exp = (function() {
     const settings = {
         pM: [[.5, .9], [.9, .5]][Math.floor(Math.random() * 2)],
         pM_practice: .5,
-        gameType: 'bern',
+        gameType: ['bern', 'strk'][Math.floor(Math.random() * 2)],
         nTrials: 5,
         basePay: 2.40,
         roundLength: 6,
@@ -20,7 +20,7 @@ var exp = (function() {
         color_2: ['<span style="color: #00aa00; font-weight: bold">green</span>', '<span style="color: #1067e8; font-weight: bold">blue</span>'][1 - colorOrder],
     };
 
-    console.log(settings.pM);
+    console.log(settings.pM, settings.gameType);
 
 
     settings.tileHit_1 = `<div class="outcome-container">
@@ -40,9 +40,9 @@ var exp = (function() {
 
     // save condition and URL data
     jsPsych.data.addProperties({
-        pM: settings.pM,
-        gameType_1: settings.gameType[0],
-        gameType_2: settings.gameType[1],
+        pM_1: settings.pM[0],
+        pM_2: settings.pM[1],
+        gameType: settings.gameType,
         basePay: settings.basePay,
         startTime: String(new Date()),
     });
@@ -307,7 +307,7 @@ var exp = (function() {
         this.type = jsPsychSurveyLikert;
         this.questions = [
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>How <b>effortful</b> was the ${name}?</div>`,
+                prompt: `<p>How <b>effortful</b> was the ${name}?</p>`,
                 name: `effort`,
                 labels: ["0<br>A little", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Extremely"],
                 required: true,
@@ -325,13 +325,13 @@ var exp = (function() {
         this.type = jsPsychSurveyLikert;
         this.questions = [
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>Was the ${settings.gameName_1} too easy, too difficult, or somewhere in between?</div>`,
+                prompt: `<p>Was the ${settings.gameName_1} too easy, too difficult, or somewhere in between?</p>`,
                 name: `scb_1`,
                 labels: ['-4<br>Way too easy', '-3', '-2', '-1', '0<br>Neither too easy nor too difficult', '1', '2', '3', '4<br>Way too difficult'],
                 required: true,
             },
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>Was the ${settings.gameName_2} too easy, too difficult, or somewhere in between?</div>`,
+                prompt: `<p>Was the ${settings.gameName_2} too easy, too difficult, or somewhere in between?</p>`,
                 name: `scb_2`,
                 labels: ['-4<br>Way too easy', '-3', '-2', '-1', '0<br>Neither too easy nor too difficult', '1', '2', '3', '4<br>Way too difficult'],
                 required: true,
