@@ -1637,11 +1637,10 @@ const dmPsych = (function() {
       };
 
       if (gameType == 'strk') {
-        if (round == 1) {
         const fasterOrSlower = (pM < .75) ? "you'll have to respond faster than you did" : (pM > .75) ? "you won't have to respond as fast as you did" : "you'll have to respond just as fast as you did";
-          const speed = (pM < .75) ? "less" : (pM > .75) ? "more" : "the same amount of";
-          const asIn = (pM == .75) ? "as in" : "compared to";
-
+        const speed = (pM < .75) ? "less" : (pM > .75) ? "more" : "the same amount of";
+        const asIn = (pM == .75) ? "as in" : "compared to";
+        if (round == 1) {
           html = [`<div class='parent'>
                     <p>Practice is now complete.</p>
                     <p>Now that you have a feel for the ${gameName_1}, you'll learn how to earn tokens.</p>

@@ -9,7 +9,7 @@ var exp = (function() {
         pM: [[.5, .9], [.9, .5]][Math.floor(Math.random() * 2)],
         pM_practice: .5,
         gameType: ['bern', 'strk'][Math.floor(Math.random() * 2)],
-        nTrials: 5,
+        nTrials: 50,
         basePay: 2.40,
         roundLength: 6,
         hex_1: ['#00aa00', '#1067e8'][colorOrder],
